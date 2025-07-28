@@ -98,3 +98,18 @@ $ cast --help
 - Contract A inherits from contract B using the `is` keyword.
 - The function that is going to be overriden by a derived contract must be declared as `virtual` and the function that is going to veride the base function must use the keyword `override`.
 - Solidity supports multiple inheritance including including polymorphism and its possible to call functions further up in the inheritance hierarchy internally by explicitely specifying the contract using `ContractName.functionName()` or using `super.functionName()` if you want to call the function one level higher up.
+
+
+# LIBRARIES
+
+- solidity libraries are reusable, pre-written smart contracts designed to provide common functions that other smart contacts can use without duplicating code.
+
+- It helps organise code by putting commonly used functions in one place.
+
+Libraries are:
+
+    - Stateless: Libraries cannot store data or hold ether.
+    - Reusable: Same logic can be used in multiple contracts.
+    - Efficient: Functions can be internal or public. Functions can be inlined or deployed once and referenced.
+
+Overall, solidity libraries are useful for maths, conversions and string manipulations.

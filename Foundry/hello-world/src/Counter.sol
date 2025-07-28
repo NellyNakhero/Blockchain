@@ -32,7 +32,7 @@ contract B is A {
         return name;
     }
 
-    function setCity(string memory _city) public override  {
-        city = _city
+    function doSomething() public pure override returns (string memory) {
+        return "Doing something in the derived contract";
     }
 }
