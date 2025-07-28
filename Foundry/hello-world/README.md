@@ -113,3 +113,16 @@ Libraries are:
     - Efficient: Functions can be internal or public. Functions can be inlined or deployed once and referenced.
 
 Overall, solidity libraries are useful for maths, conversions and string manipulations.
+
+
+# SOLIDITY EVENTS
+
+- Solidity events are a way for smart contracts to communicate with the outside world by logging specific occurrences or state changes on the blockchain.
+- They allow decentralized applications to track contract activity efficiently and provide a mechanism for external applications(e.g frontend, indexers) to listen for updates.
+- They are defined using the *event* keyword and are triggered using the *emit* keyword.
+
+# SOLIDITY ERROR & ERROR HANDLING
+
+- Errors in solidity provide a convinient and gas efficient way to explain to the user why an operation failed.
+- They are mechanisms to handle exceptional conditions in smart contracts, allowing contracts to communicate issues, revert transactions graceffully and save gas.
+- Errors can be defined inside and outside of contracts (including interfaces and libraries).

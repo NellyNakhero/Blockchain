@@ -6,14 +6,26 @@ contract A {
     //state variables
     string public name;
     string public city;
+    address public owner;
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not Owner");
+        _;
+    }
+
+    modifier notSmartContract() {
+        require(msg.sender == address(0), "Calls not allowed for smart contracts");
+        _;
+    }
     
 
     constructor(string memory _name, string memory _city) {
         name = _name;
         city = _city;
+        owner = msg.sender;
     }
 
-    function setName(string memory _name) public {
+    function setName(string memory _name) public onlyOwner()  {
         name = _name;
     }
 
