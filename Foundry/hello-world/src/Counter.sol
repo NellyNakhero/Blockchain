@@ -2,9 +2,11 @@
 pragma solidity ^0.8.13;
 
 contract A {
+    using Test for string;
     //state variables
     string public name;
     string public city;
+    
 
     constructor(string memory _name, string memory _city) {
         name = _name;
@@ -23,9 +25,15 @@ contract A {
         return "Doing something in base contract";
     }
 
+    function concat(string memory _name, string memory _city) public pure returns(string memory) {
+       return _name.join(_city);
+    }
+
 }
 
 contract B is A {
+    using Test for uint;
+
     constructor(string memory _name, string memory _city) A("Nelly", "Kiligi"){}
 
     function getName() public view returns (string memory) {
@@ -34,5 +42,19 @@ contract B is A {
 
     function doSomething() public pure override returns (string memory) {
         return "Doing something in the derived contract";
+    }
+
+    function math(uint a, uint b) public pure returns(uint) {
+        return a.add(b);
+    }
+}
+
+library Test {
+    function join (string memory a, string memory b) public pure returns(string memory) {
+        return string(abi.encodePacked(a, b));
+    }
+
+    function add(uint a, uint b) public pure returns(uint){
+        return a + b;
     }
 }
