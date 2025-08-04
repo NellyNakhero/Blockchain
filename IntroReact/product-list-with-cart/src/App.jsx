@@ -2,32 +2,27 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Dessert from './components/dessert/Dessert'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [menu, setMenu] = useState([
+    { id: 1, price:100, foodName: "Waffle", foodDescription:"Waffle with Berries", foodImage: "https://www.fridaycakenight.com/wp-content/uploads/2015/12/Waffles1-745x1024.jpg"},
+        { id: 1, price:100, foodName: "Waffle", foodDescription:"Waffle with Berries", foodImage: "https://www.fridaycakenight.com/wp-content/uploads/2015/12/Waffles1-745x1024.jpg"}
+
+  ])
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="body-container">
+        <h1>Desserts</h1>
+
+        {/* dessert lists */}
+        <div>
+          {menu.map((item) => (
+            <Dessert key={item.id} imgUrl={item.foodImage} foodName={item.foodName} foodDescription={item.foodDescription} foodPrice={item.price} />
+          ) )}
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
