@@ -1,19 +1,14 @@
+// src/components/ProductList.jsx
 import React from 'react';
 import ProductCard from './ProductCard';
-import './ProductList.css';
+import '../styles/ProductList.css';
 
-const ProductList = ({ products, addToCart }) => {
+export default function ProductList({ products, addToCart }) {
   return (
-    <section className="product-list">
-      {products.map((product, index) => (
-        <ProductCard 
-          key={index} 
-          product={product} 
-          addToCart={addToCart} 
-        />
+    <main className="product-list" role="main" aria-label="Product list">
+      {products.map(product => (
+        <ProductCard key={product.name} product={product} addToCart={addToCart} />
       ))}
-    </section>
+    </main>
   );
-};
-
-export default ProductList;
+}

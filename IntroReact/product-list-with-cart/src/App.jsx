@@ -1,71 +1,55 @@
+// src/App.jsx
 import React, { useState, useEffect } from 'react';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import OrderModal from './components/OrderModal';
-
-import './App.css'
 import productsData from './data.json';
+import './styles/App.css';
 
-
-function App() {
+export default function App() {
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-    // Load product data
   useEffect(() => {
     setProducts(productsData);
   }, []);
 
-  // Add product to cart
-  const addToCart = (product) => {
-    setCart((prevCart) => {
-      const itemIndex = prevCart.findIndex((item) => item.name === product.name);
-
-      if (itemIndex > -1) {
-        // If product already in cart, increase quantity
-        const updatedCart = [...prevCart];
-        updatedCart[itemIndex].quantity += 1;
-        return updatedCart;
+  function addToCart(product) {
+    setCart(prev => {
+      const exists = prev.find(item => item.name === product.name);
+      if (exists) {
+        return prev.map(item =>
+          item.name === product.name
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
       }
-
-      // If new product, add it
-      return [...prevCart, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity: 1 }];
     });
-  };
+  }
 
-  // Remove item from cart
-  const removeFromCart = (productToRemove) => {
-    setCart((prevCart) => prevCart.filter(item => item.name !== productToRemove.name));
-  };
+  function removeFromCart(name) {
+    setCart(prev => prev.filter(item => item.name !== name));
+  }
 
-  // Update quantity
-  const updateQty = (productToUpdate, newQty) => {
-    if (newQty < 1) {
-      removeFromCart(productToUpdate);
-      return;
-    }
-
-    setCart((prevCart) =>
-      prevCart.map(item =>
-        item.name === productToUpdate.name
-          ? { ...item, quantity: newQty }
-          : item
+  function updateQuantity(name, qty) {
+    if (qty < 1) return;
+    setCart(prev =>
+      prev.map(item =>
+        item.name === name ? { ...item, quantity: qty } : item
       )
     );
-  };
+  }
 
-   // Confirm order
-  const confirmOrder = () => {
-    setCart([]);
-    setIsModalOpen(false);
-    alert('✅ Your order has been placed!');
-  };
+  function confirmOrder() {
+    setModalOpen(true);
+  }
 
-  // Start new order
-  const resetCart = () => {
+  function resetOrder() {
     setCart([]);
-  };
+    setModalOpen(false);
+  }
 
   return (
     <div className="app-container">
@@ -73,19 +57,11 @@ function App() {
       <Cart
         cart={cart}
         removeFromCart={removeFromCart}
-        updateQty={updateQty}
-        onConfirm={() => setIsModalOpen(true)}
-        onReset={resetCart}
+        updateQuantity={updateQuantity}
+        confirmOrder={confirmOrder}
+        resetOrder={resetOrder}
       />
-      {isModalOpen && (
-        <OrderModal
-          cart={cart}
-          onConfirm={confirmOrder}
-          onClose={() => setIsModalOpen(false)}
-        />
-      )}
+      {modalOpen && <OrderModal onClose={() => setModalOpen(false)} resetOrder={resetOrder} />}
     </div>
   );
 }
-
-export default App

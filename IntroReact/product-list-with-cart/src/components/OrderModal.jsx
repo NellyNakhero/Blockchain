@@ -1,30 +1,22 @@
+// src/components/OrderModal.jsx
 import React from 'react';
-import './OrderModal.css';
+import '../styles/OrderModal.css';
 
-const OrderModal = ({ cart, onConfirm, onClose }) => {
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+export default function OrderModal({ onClose, resetOrder }) {
+  function handleStartNew() {
+    resetOrder();
+    onClose();
+  }
 
   return (
-    <div className="modal-backdrop">
-      <div className="modal">
-        <h2>Order Summary</h2>
-        <ul className="modal-items">
-          {cart.map((item, i) => (
-            <li key={i}>
-              {item.name} × {item.quantity} = ${(
-                item.price * item.quantity
-              ).toFixed(2)}
-            </li>
-          ))}
-        </ul>
-        <p className="modal-total">Total: <strong>${total.toFixed(2)}</strong></p>
-        <div className="modal-buttons">
-          <button className="confirm-btn" onClick={onConfirm}>Place Order</button>
-          <button className="cancel-btn" onClick={onClose}>Cancel</button>
-        </div>
+    <div className="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="order-confirmation-title">
+      <div className="modal-content">
+        <h2 id="order-confirmation-title">Order Confirmed!</h2>
+        <p>Thank you for your purchase. Your order will be processed shortly.</p>
+        <button onClick={handleStartNew} className="start-new-btn" autoFocus>
+          Start New Order
+        </button>
       </div>
     </div>
   );
-};
-
-export default OrderModal;
+}
