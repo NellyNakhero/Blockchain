@@ -1,30 +1,91 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React, { useState, useEffect } from 'react';
+import ProductList from './components/ProductList';
+import Cart from './components/Cart';
+import OrderModal from './components/OrderModal';
+
 import './App.css'
-import Dessert from './components/dessert/Dessert'
+import productsData from './data.json';
+
 
 function App() {
-  const [menu, setMenu] = useState([
-    { id: 1, price:100, foodName: "Waffle", foodDescription:"Waffle with Berries", foodImage: "https://www.fridaycakenight.com/wp-content/uploads/2015/12/Waffles1-745x1024.jpg"},
-        { id: 1, price:100, foodName: "Waffle", foodDescription:"Waffle with Berries", foodImage: "https://www.fridaycakenight.com/wp-content/uploads/2015/12/Waffles1-745x1024.jpg"}
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  ])
+    // Load product data
+  useEffect(() => {
+    setProducts(productsData);
+  }, []);
+
+  // Add product to cart
+  const addToCart = (product) => {
+    setCart((prevCart) => {
+      const itemIndex = prevCart.findIndex((item) => item.name === product.name);
+
+      if (itemIndex > -1) {
+        // If product already in cart, increase quantity
+        const updatedCart = [...prevCart];
+        updatedCart[itemIndex].quantity += 1;
+        return updatedCart;
+      }
+
+      // If new product, add it
+      return [...prevCart, { ...product, quantity: 1 }];
+    });
+  };
+
+  // Remove item from cart
+  const removeFromCart = (productToRemove) => {
+    setCart((prevCart) => prevCart.filter(item => item.name !== productToRemove.name));
+  };
+
+  // Update quantity
+  const updateQty = (productToUpdate, newQty) => {
+    if (newQty < 1) {
+      removeFromCart(productToUpdate);
+      return;
+    }
+
+    setCart((prevCart) =>
+      prevCart.map(item =>
+        item.name === productToUpdate.name
+          ? { ...item, quantity: newQty }
+          : item
+      )
+    );
+  };
+
+   // Confirm order
+  const confirmOrder = () => {
+    setCart([]);
+    setIsModalOpen(false);
+    alert('✅ Your order has been placed!');
+  };
+
+  // Start new order
+  const resetCart = () => {
+    setCart([]);
+  };
 
   return (
-    <>
-      <div className="body-container">
-        <h1>Desserts</h1>
-
-        {/* dessert lists */}
-        <div>
-          {menu.map((item) => (
-            <Dessert key={item.id} imgUrl={item.foodImage} foodName={item.foodName} foodDescription={item.foodDescription} foodPrice={item.price} />
-          ) )}
-        </div>
-      </div>
-    </>
-  )
+    <div className="app-container">
+      <ProductList products={products} addToCart={addToCart} />
+      <Cart
+        cart={cart}
+        removeFromCart={removeFromCart}
+        updateQty={updateQty}
+        onConfirm={() => setIsModalOpen(true)}
+        onReset={resetCart}
+      />
+      {isModalOpen && (
+        <OrderModal
+          cart={cart}
+          onConfirm={confirmOrder}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
+    </div>
+  );
 }
 
 export default App
