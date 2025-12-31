@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.31+commit.fd3a2265"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "MAX_TIME",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Solidity/Fundamentals.sol": "Fundamentals"
+		},
+		"evmVersion": "osaka",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Solidity/Fundamentals.sol": {
+			"keccak256": "0x2b2a81106477e06557575b07ef9d8af54eb1ca598c417e1295c6bfaa0886cd07",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0bf98a470a8e6b947c5840ab8d970d0f204c59091cfb5db8a1710b074c314cc0",
+				"dweb:/ipfs/QmdZB6YHyRG2neTi6oDcrGFQukyPdHkWN7XeGzWpYZhivf"
+			]
+		}
+	},
+	"version": 1
+}
