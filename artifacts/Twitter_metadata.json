@@ -8,6 +8,25 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "actions",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "string",
 						"name": "_tweet",
 						"type": "string"
@@ -21,9 +40,65 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "getAction",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getActionsLength",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
+					}
+				],
+				"name": "getAllOwnerTweets",
+				"outputs": [
+					{
+						"internalType": "string[]",
+						"name": "",
+						"type": "string[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
 					}
 				],
 				"name": "getTweet",
@@ -43,6 +118,11 @@
 						"internalType": "address",
 						"name": "",
 						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"name": "tweets",
@@ -54,6 +134,19 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_action",
+						"type": "string"
+					}
+				],
+				"name": "updateUserActionsOptions",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -85,11 +178,11 @@
 	},
 	"sources": {
 		"Solidity/Twitter.sol": {
-			"keccak256": "0x5dd774b7ca9d050da6c4234c19a93f0143f2ac9142644896d35e0625a0b99fbb",
+			"keccak256": "0xb3fc5efa477fba57a9ee0248086681b8a8aff4385a90f0f13ce672ade67da6ad",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f442593b09312e3bf413c8f7f72c0280d82f8e17156940b6810d43f794ac1daf",
-				"dweb:/ipfs/QmVwpxfxLfsi72gEF3hSN4KdmFVeN2NyiiGuNX2EkcV4K8"
+				"bzz-raw://6f65e14b9e30081c7eb808febca367c35d67a0567d40f20a1986fb1bbf38a6a5",
+				"dweb:/ipfs/QmW5ZRpskM4V5iZKqTEV18fHkteKWqFq4HW7dYLq5qdG5m"
 			]
 		}
 	},
