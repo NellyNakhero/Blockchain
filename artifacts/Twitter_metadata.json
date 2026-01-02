@@ -80,9 +80,31 @@
 				"name": "getAllOwnerTweets",
 				"outputs": [
 					{
-						"internalType": "string[]",
+						"components": [
+							{
+								"internalType": "address",
+								"name": "author",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "content",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "timestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "likes",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Twitter.Tweet[]",
 						"name": "",
-						"type": "string[]"
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -128,9 +150,24 @@
 				"name": "tweets",
 				"outputs": [
 					{
+						"internalType": "address",
+						"name": "author",
+						"type": "address"
+					},
+					{
 						"internalType": "string",
-						"name": "",
+						"name": "content",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "likes",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -178,11 +215,11 @@
 	},
 	"sources": {
 		"Solidity/Twitter.sol": {
-			"keccak256": "0xb3fc5efa477fba57a9ee0248086681b8a8aff4385a90f0f13ce672ade67da6ad",
+			"keccak256": "0x2389c4e47e10dcfa029478b6a83ac520935cbdd7e7774ea58243f10af55e548c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://6f65e14b9e30081c7eb808febca367c35d67a0567d40f20a1986fb1bbf38a6a5",
-				"dweb:/ipfs/QmW5ZRpskM4V5iZKqTEV18fHkteKWqFq4HW7dYLq5qdG5m"
+				"bzz-raw://5d43e2f6682a20c2495d448ad125fbdc6b51a320b3e9d135c29a7453eeb9dc0b",
+				"dweb:/ipfs/QmUpBFdUapUDnexsTUzaDKMxkLaEfdorS2Xej1vneqmYyS"
 			]
 		}
 	},
