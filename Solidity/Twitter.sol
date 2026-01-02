@@ -2,6 +2,8 @@
 pragma solidity ^0.8.2;
 
 contract Twitter {
+    uint16  constant MAX_TWEET_LENGTH = 280;
+
     struct Tweet {
         address author;
         string content;
@@ -15,6 +17,9 @@ contract Twitter {
     string[] public actions = ["like", "reply", "reshare"];
 
     function createTweet(string memory _tweet) public {
+        require(bytes(_tweet).length > 0, "Tweet cannot be empty");
+        require(bytes(_tweet).length <= MAX_TWEET_LENGTH, "Tweet cannot be more than 280 characters");
+
         Tweet memory newTweet = Tweet({
             content : _tweet, 
             timestamp: block.timestamp, 
@@ -29,6 +34,7 @@ contract Twitter {
     }
 
     function getAllOwnerTweets(address _owner) public view returns (Tweet[] memory) {
+        require(msg.sender == _owner, "You can only get your own tweets");
         return tweets[_owner];
     }
 
