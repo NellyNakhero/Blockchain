@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Twitter dApp</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simple Twitter dApp</h1>
+            <button id="connect-wallet-btn">Connect Wallet</button>
+        </header>
+
+        <main id="app" style="display: none;">
+            <div class="user-info">
+                <p>Connected: <span id="user-address"></span></p>
+            </div>
+
+            <section class="create-tweet-section">
+                <h2>Create a Tweet</h2>
+                <form id="tweet-form">
+                    <textarea id="tweet-content" rows="4" placeholder="What's happening?" maxlength="280" required></textarea>
+                    <button type="submit">Tweet</button>
+                </form>
+            </section>
+
+            <section class="feed-section">
+                <h2>Your Tweets</h2>
+                <div id="user-tweets">
+                    <!-- Tweets will be loaded here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Import ethers.js -->
+    <!-- Import ethers.js from a reliable CDN -->
+    <!-- Your custom script -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6/dist/ethers.umd.min.js"></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
