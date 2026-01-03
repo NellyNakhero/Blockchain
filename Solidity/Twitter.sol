@@ -17,6 +17,10 @@ contract Twitter {
 
     string[] public actions = ["like", "reply", "reshare"];
 
+    event TweetCreated(uint256 indexed id, uint256 timestamp, address author);
+    event TweetLiked(address liker, address tweetAuthor, uint256 id, uint256 newLikesCount);
+    event TweetUnLiked(address unliker, address tweetAuthor, uint256 id, uint256 newLikesCount);
+
     function createTweet(string memory _tweet) public {
         require(bytes(_tweet).length > 0, "Tweet cannot be empty");
         require(bytes(_tweet).length <= MAX_TWEET_LENGTH, "Tweet cannot be more than 280 characters");
@@ -29,6 +33,8 @@ contract Twitter {
             likes: 0
         });
         tweets[msg.sender].push(newTweet);
+
+        emit TweetCreated(newTweet.id, newTweet.timestamp, newTweet.author);
     }
 
     function getTweet(address _owner, uint _index) public view returns (string memory) {
@@ -44,6 +50,8 @@ contract Twitter {
         require(tweets[_author][tweetIndex].author == _author, "Tweet does not exist");
         
         tweets[_author][tweetIndex].likes += 1;
+
+        emit TweetLiked(msg.sender, _author, tweets[_author][tweetIndex].id, tweets[_author][tweetIndex].likes);
     }
 
     function unLikeTweet(address _author, uint tweetIndex) external {
@@ -51,6 +59,8 @@ contract Twitter {
         require(tweets[_author][tweetIndex].likes > 0, "Tweet does not have any likes");
         
         tweets[_author][tweetIndex].likes -= 1;
+
+        emit TweetUnLiked(msg.sender, _author, tweets[_author][tweetIndex].id, tweets[_author][tweetIndex].likes);
     }
 
     function getTweetLikes(address _author, uint tweetIndex) external view returns(uint) {
