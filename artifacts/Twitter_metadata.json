@@ -82,6 +82,11 @@
 					{
 						"components": [
 							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
 								"internalType": "address",
 								"name": "author",
 								"type": "address"
@@ -138,6 +143,48 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tweetIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getTweetLikes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tweetIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "likeTweet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "",
 						"type": "address"
 					},
@@ -149,6 +196,11 @@
 				],
 				"name": "tweets",
 				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
 					{
 						"internalType": "address",
 						"name": "author",
@@ -171,6 +223,24 @@
 					}
 				],
 				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tweetIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "unLikeTweet",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -215,11 +285,11 @@
 	},
 	"sources": {
 		"Solidity/Twitter.sol": {
-			"keccak256": "0x4cea88b5cccf38d86d48f61a548a85a4555118961fa810d3a09faeef186bd714",
+			"keccak256": "0xfb1350df72edab8bb5d3d56de2a000e77206f239b6e3d96bfbb46fa75b219d11",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8d502a059777e4770edc76bd448e9736106b47cbc35a2c182d493e6cffd1886e",
-				"dweb:/ipfs/QmUJsUj9JGWABJv3ytxsg4LuLoBqr746m29uNZo7jEKLPm"
+				"bzz-raw://d897e84bdbd5a00c4936492364f9096810d48c00a6a9d648a220a166a7c9e191",
+				"dweb:/ipfs/QmWG9MDsQkeSw6DSzbNTTzTi2KEeq8p4sBcQgCu1mD54WT"
 			]
 		}
 	},
