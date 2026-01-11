@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.2;
 
-contract Twitter {
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract Twitter is Ownable {
     uint16  constant MAX_TWEET_LENGTH = 280;
+
+    constructor() Ownable(msg.sender){}
 
     struct Tweet {
         uint256 id;
@@ -79,7 +83,7 @@ contract Twitter {
         return totalCummulativeLikes;
     } 
 
-    function updateUserActionsOptions(string memory _action) public {
+    function updateUserActionsOptions(string memory _action) public  onlyOwner{
         actions.push(_action);
     }
     
