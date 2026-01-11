@@ -69,6 +69,16 @@ contract Twitter {
         return tweets[_author][tweetIndex].likes;
     }
 
+    function getTotalLikes(address _author) external view returns (uint) {
+        uint totalCummulativeLikes = 0;
+
+        for (uint i = 0; i < tweets[_author].length; i++) {
+            totalCummulativeLikes += tweets[_author][i].likes;
+        }
+
+        return totalCummulativeLikes;
+    } 
+
     function updateUserActionsOptions(string memory _action) public {
         actions.push(_action);
     }

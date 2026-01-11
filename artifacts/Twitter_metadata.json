@@ -206,6 +206,25 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_author",
+						"type": "address"
+					}
+				],
+				"name": "getTotalLikes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
 					},
@@ -372,11 +391,11 @@
 	},
 	"sources": {
 		"Solidity/Twitter.sol": {
-			"keccak256": "0xc0e860b1b15c361c2b64ea30a59586e2aefa24af0a8af511cddd7822ff0d8c00",
+			"keccak256": "0x680fb7518e15c0077b0cda66d0b26a5177fc1e42358b2bb045c8472a072eb67e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://e9067ec92eaa6389b3b598348ce69c74ed8c5b31f975e330eeab3ae9805e2d0f",
-				"dweb:/ipfs/QmbYpDtTFkkuKACYXSPn2vkWDiC5UfKZL2UPeuKHQMfQ21"
+				"bzz-raw://fcd870bf775a51b33d09e6318ca0b810f8784abdc6798e5da38207fbb5b6b9f8",
+				"dweb:/ipfs/QmcwAJrV4wSSxWguZdjJjkhnMZLyvjxZTbAu46ya6eG68D"
 			]
 		}
 	},
